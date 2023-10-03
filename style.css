@@ -60,10 +60,20 @@ input::placeholder {
   justify-content: center;
 }
 .card {
+  position: relative;
   width: 250px;
   border-radius: 5px;
   background: var(--clr-light);
   box-shadow: 0 0 0 5px var(--clr-pokered), 0 0 0 10px var(--clr-light);
+}
+.card__id {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
+  background: var(--clr-pokered);
+  font-family: var(--font-display);
+  color: var(--clr-light);
 }
 .card__img {
   height: 150px;
