@@ -24,12 +24,28 @@ body {
   color: var(--clr-dark);
 }
 
+input::placeholder {
+  font-family: inherit;
+}
+
 .main-title {
   margin: 3rem 1rem;
   font-family: var(--font-display);
   font-size: 4rem;
   text-align: center;
   color: var(--clr-light);
+}
+
+.search {
+  display: block;
+  width: 250px;
+  height: 2rem;
+  margin: 3rem auto;
+  padding: 0.5rem;
+  border: 2px solid var(--clr-dark);
+  border-radius: 5px;
+  box-shadow: 0 0 0 2px var(--clr-light);
+  outline-color: var(--clr-pokered);
 }
 
 .cards {
