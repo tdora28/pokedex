@@ -1,6 +1,6 @@
 const cardContainer = document.querySelector(".cards");
 
-let pokeData;
+let pokeData = [];
 
 const fetchData = async () => {
   await fetch("https://pokeapi.co/api/v2/pokemon?limit=121&offset=0")
@@ -22,7 +22,6 @@ const fetchData = async () => {
       Promise.all(fetches).then((res) => {
         pokeData = res;
         pokeCards();
-        console.log(pokeData);
       });
     });
 };
