@@ -32,6 +32,7 @@ const fetchData = async () => {
 const pokeCards = (searchString) => {
   const content = pokeData
     .filter((pokemon) => {
+      // If searchString === "", it will return every pokemon
       return pokemon.name.includes(searchString);
     })
     .map((pokemon) => {
@@ -62,6 +63,7 @@ const pokeCards = (searchString) => {
 fetchData();
 
 searchBar.addEventListener("input", (e) => {
-  const searchString = e.target.value;
+  // The "input" event will work also when clearing the searchBar (maybe better than "keyup")
+  const searchString = e.target.value.toLowerCase();
   pokeCards(searchString);
 });
