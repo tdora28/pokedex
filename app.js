@@ -30,6 +30,10 @@ const fetchData = async () => {
 const pokeCards = () => {
   const content = pokeData
     .map((pokemon) => {
+      let tags = pokemon.types.map((item) => {
+        return `<span class="tag ${item.type.name}">${item.type.name}</span>`;
+      });
+
       return `
         <div class="card">
             <p class="card__id">#${pokemon.id}</p>
@@ -39,12 +43,11 @@ const pokeCards = () => {
             <div class="card__info">
                 <h3 class="card__title">${pokemon.name}</h3>
                 <p class="card__tags">
-                
-                <span class="tag electric">Electric</span><span class="tag poison">Poison</span>
+                  ${tags.join("")}
                 </p>
             </div>
         </div>
-    `;
+     `;
     })
     .join("");
 
