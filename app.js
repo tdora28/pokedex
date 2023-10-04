@@ -1,4 +1,7 @@
 const cardContainer = document.querySelector(".cards");
+const searchBar = document.querySelector("#search");
+
+console.log(searchBar.value);
 
 let pokeData = [];
 
@@ -21,13 +24,16 @@ const fetchData = async () => {
 
       Promise.all(fetches).then((res) => {
         pokeData = res;
-        pokeCards();
+        pokeCards("");
       });
     });
 };
 
-const pokeCards = () => {
+const pokeCards = (searchString) => {
   const content = pokeData
+    .filter((pokemon) => {
+      return pokemon.name.includes(searchString);
+    })
     .map((pokemon) => {
       let tags = pokemon.types.map((item) => {
         return `<span class="tag ${item.type.name}">${item.type.name}</span>`;
@@ -54,3 +60,8 @@ const pokeCards = () => {
 };
 
 fetchData();
+
+searchBar.addEventListener("input", (e) => {
+  const searchString = e.target.value;
+  pokeCards(searchString);
+});
