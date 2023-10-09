@@ -1,9 +1,9 @@
 :root {
-  --font-base: "Roboto", sans-serif;
-  --font-display: "VT323", monospace;
+  --font-base: 'Roboto', sans-serif;
+  --font-display: 'VT323', monospace;
 
   --clr-dark: #333;
-  --clr-mid: #969696;
+  --clr-mid: #a8a8a8;
   --clr-light: #fff;
   --clr-pokered: #e93d38;
 }
@@ -19,8 +19,7 @@
 body {
   min-height: 100vh;
   padding: 1rem;
-  background-image: url("https://cdn.pixabay.com/photo/2020/09/19/14/47/pokeball-5584675_1280.jpg");
-  /* background-image: url("https://cdn.pixabay.com/photo/2022/06/25/09/43/pokemon-7283209_1280.jpg"); */
+  background-image: url('https://cdn.pixabay.com/photo/2020/09/19/14/47/pokeball-5584675_1280.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -62,7 +61,7 @@ input::placeholder {
 }
 .card {
   position: relative;
-  width: 180px;
+  width: 200px;
   border-radius: 5px;
   background: var(--clr-light);
   box-shadow: 0 0 0 5px var(--clr-pokered), 0 0 0 10px var(--clr-light);
@@ -70,7 +69,7 @@ input::placeholder {
 .card__id {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   padding: 0.5rem;
   background: var(--clr-pokered);
   font-family: var(--font-display);
@@ -166,4 +165,15 @@ input::placeholder {
 }
 .tag.fairy {
   background: #f0b6bc;
+}
+
+.card__measurements {
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  border: 1px dashed var(--clr-pokered);
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+.card__measurements > span {
+  display: block;
 }
