@@ -2,6 +2,8 @@ const cardContainer = document.querySelector('.cards');
 const searchBar = document.querySelector('#search');
 const genBtns = document.querySelectorAll('.gen-btn');
 const genInfo = document.querySelector('#genInfo');
+const typeFilter = document.querySelector('#typeFilter');
+const filterForm = document.querySelector('#filterForm');
 
 let pokeData = [];
 
@@ -47,14 +49,26 @@ const fetchData = async (generation) => {
           return a.id - b.id;
         });
         const numOfPokemonInGen = res.length;
-        genInfo.textContent = `There are ${numOfPokemonInGen} pokemon in Generation ${convertToRomanNum(generation)}`;
-        pokeCards('');
+        genInfo.textContent = `There is a total of ${numOfPokemonInGen} pokemon in Generation ${convertToRomanNum(generation)}`;
+        pokeCards('all', '');
       });
     });
 };
 
-const pokeCards = (searchString) => {
+const pokeCards = (filterString, searchString) => {
   const content = pokeData
+    .filter((pokemon) => {
+      if (filterString === 'all') {
+        return pokemon;
+      } else {
+        let pokeTypes = pokemon.types.map((item) => {
+          return item.type.name;
+        });
+        if (pokeTypes.includes(filterString)) {
+          return pokemon;
+        }
+      }
+    })
     .filter((pokemon) => {
       // If searchString === "", it will return every pokemon
       return pokemon.name.includes(searchString);
@@ -98,12 +112,17 @@ genBtns.forEach((btn) => {
     const genNum = e.target.dataset.gen;
     fetchData(genNum);
 
-    searchBar.classList.add('show');
+    filterForm.classList.add('show');
+    filterForm.reset();
   });
 });
 
-searchBar.addEventListener('input', (e) => {
+filterForm.addEventListener('input', (e) => {
+  e.preventDefault();
+
   // The "input" event will work also when clearing the searchBar (maybe better than "keyup")
-  const searchString = e.target.value.toLowerCase();
-  pokeCards(searchString);
+  const searchString = searchBar.value.toLowerCase();
+  const showType = typeFilter.value;
+
+  pokeCards(showType, searchString);
 });
