@@ -5,6 +5,22 @@ const genInfo = document.querySelector('#genInfo');
 
 let pokeData = [];
 
+const convertToRomanNum = (num) => {
+  const conversionTable = {
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI',
+    7: 'VII',
+    8: 'VIII',
+    9: 'IX',
+  };
+
+  return conversionTable[num];
+};
+
 const fetchData = async (generation) => {
   await fetch(`https://pokeapi.co/api/v2/generation/${generation}/`)
     .then((response) => response.json())
@@ -31,7 +47,7 @@ const fetchData = async (generation) => {
           return a.id - b.id;
         });
         const numOfPokemonInGen = res.length;
-        genInfo.textContent = `There are ${numOfPokemonInGen} pokemon in Generation ${generation}`;
+        genInfo.textContent = `There are ${numOfPokemonInGen} pokemon in Generation ${convertToRomanNum(generation)}`;
         pokeCards('');
       });
     });
