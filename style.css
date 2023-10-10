@@ -28,7 +28,8 @@ body {
   color: var(--clr-dark);
 }
 
-input::placeholder {
+input::placeholder,
+button {
   font-family: inherit;
 }
 
