@@ -1,16 +1,18 @@
 const cardContainer = document.querySelector('.cards');
 const searchBar = document.querySelector('#search');
-
-console.log(searchBar.value);
+const genBtns = document.querySelectorAll('.gen-btn');
+const genInfo = document.querySelector('#genInfo');
 
 let pokeData = [];
 
-const fetchData = async () => {
-  await fetch('https://pokeapi.co/api/v2/pokemon?limit=121&offset=0')
+const fetchData = async (generation) => {
+  await fetch(`https://pokeapi.co/api/v2/generation/${generation}/`)
     .then((response) => response.json())
     .then((data) => {
-      const fetches = data.results.map((item) => {
-        return fetch(item.url)
+      const fetches = data.pokemon_species.map((item) => {
+        let searchNum = item.url.replace('https://pokeapi.co/api/v2/pokemon-species/', '');
+
+        return fetch(`https://pokeapi.co/api/v2/pokemon/${searchNum}`)
           .then((res) => res.json())
           .then((data) => {
             return {
@@ -25,7 +27,11 @@ const fetchData = async () => {
       });
 
       Promise.all(fetches).then((res) => {
-        pokeData = res;
+        pokeData = res.sort((a, b) => {
+          return a.id - b.id;
+        });
+        const numOfPokemonInGen = res.length;
+        genInfo.textContent = `There are ${numOfPokemonInGen} pokemon in Generation ${generation}`;
         pokeCards('');
       });
     });
@@ -66,7 +72,19 @@ const pokeCards = (searchString) => {
   cardContainer.innerHTML = content;
 };
 
-fetchData();
+genBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    genBtns.forEach((btn) => {
+      btn.classList.remove('selected');
+    });
+    e.target.classList.add('selected');
+
+    const genNum = e.target.dataset.gen;
+    fetchData(genNum);
+
+    searchBar.classList.add('show');
+  });
+});
 
 searchBar.addEventListener('input', (e) => {
   // The "input" event will work also when clearing the searchBar (maybe better than "keyup")

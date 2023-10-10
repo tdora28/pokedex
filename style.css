@@ -41,8 +41,57 @@ input::placeholder {
   color: var(--clr-light);
 }
 
+.generations {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin: 0 auto 3rem;
+  padding: 1rem;
+  border: 2px solid var(--clr-pokered);
+  border-radius: 5px;
+  background: var(--clr-light);
+  box-shadow: 0 0 0 2px var(--clr-light);
+}
+.gen-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--clr-mid);
+  border-radius: 5px;
+  background: var(--clr-dark);
+  color: var(--clr-light);
+  box-shadow: inset 0 0 0 2px var(--clr-light);
+  cursor: pointer;
+}
+.gen-btn:hover {
+  background: var(--clr-mid);
+}
+.gen-btn:active {
+  transform: scale(0.95);
+}
+.gen-btn.selected {
+  border-color: var(--clr-pokered);
+  background: var(--clr-pokered);
+}
+
+.placeholder {
+  width: max-content;
+  margin: 0 auto 3rem;
+  padding: 1rem;
+  border: 2px solid var(--clr-pokered);
+  border-radius: 5px;
+  background: var(--clr-light);
+  box-shadow: 0 0 0 2px var(--clr-light);
+  font-size: 1.3rem;
+}
+.placeholder > span {
+  display: inline-block;
+  margin: 0 0.5rem;
+  color: var(--clr-pokered);
+}
+
 .search {
-  display: block;
+  display: none;
   width: 250px;
   height: 2rem;
   margin: 3rem auto;
@@ -52,12 +101,16 @@ input::placeholder {
   box-shadow: 0 0 0 2px var(--clr-light);
   outline-color: var(--clr-pokered);
 }
+.search.show {
+  display: block;
+}
 
 .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 .card {
   position: relative;

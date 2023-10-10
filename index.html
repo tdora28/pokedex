@@ -12,22 +12,23 @@
   <body>
     <h1 class="main-title">Pokedex</h1>
 
-    <input class="search" type="search" name="search" id="search" placeholder="Search Pokedex..." />
+    <div class="generations">
+      <button class="gen-btn" data-gen="1">Gen I</button>
+      <button class="gen-btn" data-gen="2">Gen II</button>
+      <button class="gen-btn" data-gen="3">Gen III</button>
+      <button class="gen-btn" data-gen="4">Gen IV</button>
+      <button class="gen-btn" data-gen="5">Gen V</button>
+      <button class="gen-btn" data-gen="6">Gen VI</button>
+      <button class="gen-btn" data-gen="7">Gen VII</button>
+      <button class="gen-btn" data-gen="8">Gen VIII</button>
+      <button class="gen-btn" data-gen="9">Gen IX</button>
+    </div>
 
-    <section class="cards">
-      <!-- 
-      <div class="card">
-        <p class="card__id">#4865</p>
-        <div class="card__img">
-          <img src="https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg" alt="Pikachu" />
-        </div>
-        <div class="card__info">
-          <h3 class="card__title">Pikachu</h3>
-          <p class="card__tags"><span class="tag electric">Electric</span></p>
-        </div>
-      </div>
-       -->
-    </section>
+    <p class="placeholder" id="genInfo"><span>&uArr;</span> Choose a generation <span>&uArr;</span></p>
+
+    <input class="search" type="search" name="search" id="search" placeholder="Search this Generation..." />
+
+    <section class="cards"></section>
 
     <script src="app.js"></script>
   </body>
