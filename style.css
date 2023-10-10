@@ -106,6 +106,31 @@ button {
   display: block;
 }
 
+.types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  margin: 0 auto 3rem;
+  padding: 1rem;
+  border: 2px solid var(--clr-pokered);
+  border-radius: 5px;
+  background: var(--clr-light);
+  box-shadow: 0 0 0 2px var(--clr-light);
+}
+
+.form-group label {
+  display: inline-block;
+  box-shadow: inset 0 0 0 200px var(--clr-mid);
+}
+.form-group input[type='checkbox'] {
+  display: none;
+}
+input[name='types']:checked + label.tag {
+  box-shadow: 0 0 0 2px var(--clr-light), 0 0 0 4px var(--clr-mid);
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
