@@ -79,7 +79,7 @@ option {
 }
 
 .placeholder {
-  width: max-content;
+  max-width: max-content;
   margin: 0 auto 3rem;
   padding: 1rem;
   border: 2px solid var(--clr-pokered);
@@ -87,6 +87,7 @@ option {
   background: var(--clr-light);
   box-shadow: 0 0 0 2px var(--clr-light);
   font-size: 1.3rem;
+  text-align: center;
 }
 .placeholder > span {
   display: inline-block;
