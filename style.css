@@ -1,6 +1,6 @@
 :root {
-  --font-base: 'Roboto', sans-serif;
-  --font-display: 'VT323', monospace;
+  --font-base: "Roboto", sans-serif;
+  --font-display: "VT323", monospace;
 
   --clr-dark: #333;
   --clr-mid: #a8a8a8;
@@ -19,7 +19,7 @@
 body {
   min-height: 100vh;
   padding: 1rem;
-  background-image: url('https://cdn.pixabay.com/photo/2020/09/19/14/47/pokeball-5584675_1280.jpg');
+  background-image: url("https://cdn.pixabay.com/photo/2020/09/19/14/47/pokeball-5584675_1280.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -132,14 +132,21 @@ option {
   border-radius: 5px;
   background: var(--clr-light);
   box-shadow: 0 0 0 5px var(--clr-pokered), 0 0 0 10px var(--clr-light);
+  transition: transform 0.2s ease-out;
+}
+.card:hover {
+  transform: scale(1.05) rotate(-2deg);
 }
 .card__id {
+  position: relative;
+  z-index: 1;
   position: absolute;
   top: 0;
   right: 0;
   padding: 0.5rem;
   background: var(--clr-pokered);
   font-family: var(--font-display);
+  font-size: 1.3rem;
   color: var(--clr-light);
 }
 .card__img {
@@ -152,6 +159,8 @@ option {
   border-top-right-radius: 5px;
 }
 .card__img img {
+  position: relative;
+  z-index: 2;
   height: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
