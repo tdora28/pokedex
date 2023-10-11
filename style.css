@@ -36,6 +36,10 @@ option {
   font-family: inherit;
 }
 
+select {
+  -webkit-appearance: none;
+}
+
 .main-title {
   margin: 3rem 1rem;
   font-family: var(--font-display);
